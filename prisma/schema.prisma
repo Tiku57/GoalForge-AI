@@ -1,0 +1,157 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  name              String?
+  image             String?
+  memory            String?  // JSON string: working style, focus hours, etc.
+  focusHours        String?  // JSON string
+  productivityScore Int      @default(0)
+  goals             Goal[]
+  habits            Habit[]
+  briefings         Briefing[]
+  events            Event[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Goal {
+  id             String     @id @default(cuid())
+  title          String
+  description    String?
+  deadline       DateTime?
+  status         String     @default("PLANNING") // PLANNING, ACTIVE, COMPLETED
+  riskScore      String     @default("Low Risk") // Low, Medium, High, Critical
+  completionProb Float      @default(100)
+  estimatedFinish DateTime?
+  requiredHours  Float      @default(0)
+  bufferDays     Int        @default(0)
+  userId         String
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workflows      Workflow[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model Workflow {
+  id          String            @id @default(cuid())
+  goalId      String
+  goal        Goal              @relation(fields: [goalId], references: [id], onDelete: Cascade)
+  nodes       Node[]
+  edges       Edge[]
+  history     WorkflowHistory[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model WorkflowHistory {
+  id          String   @id @default(cuid())
+  workflowId  String
+  workflow    Workflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  snapshot    String   // JSON string of the workflow state
+  savedAt     DateTime @default(now())
+}
+
+model Node {
+  id             String      @id @default(cuid())
+  workflowId     String
+  workflow       Workflow    @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  title          String
+  description    String?
+  type           String      @default("task") // milestone, task, action
+  status         String      @default("PENDING") // PENDING, IN_PROGRESS, COMPLETED, AI_RUNNING
+  agentType      String?     // RESEARCH, EXECUTE, OPTIMIZE, REVIEW
+  priority       String      @default("MEDIUM")  // CRITICAL, HIGH, MEDIUM, LOW
+  dueDate        DateTime?
+  progress       Int         @default(0)
+  positionX      Float
+  positionY      Float
+  estimatedHours Float       @default(1.0)
+  actualHours    Float       @default(0.0)
+  reasoning      String?
+  agentPipeline  String?     // JSON Array of agents scheduled to run this node
+  criticalPath   Boolean     @default(false)
+  analytics      String?     // JSON of specific metrics
+  result         Result?
+  executions     Execution[]
+}
+
+model Edge {
+  id         String   @id @default(cuid())
+  workflowId String
+  workflow   Workflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  sourceId   String
+  targetId   String
+}
+
+model Execution {
+  id          String     @id @default(cuid())
+  nodeId      String
+  node        Node       @relation(fields: [nodeId], references: [id], onDelete: Cascade)
+  agentName   String
+  agentType   String     @default("EXECUTE") // RESEARCH, WRITER, REVIEWER
+  status      String     @default("RUNNING") // RUNNING, SUCCESS, FAILED
+  reasoning   String?
+  logs        AgentLog[]
+  tokensUsed  Int        @default(0)
+  startedAt   DateTime   @default(now())
+  completedAt DateTime?
+}
+
+model AgentLog {
+  id          String    @id @default(cuid())
+  executionId String
+  execution   Execution @relation(fields: [executionId], references: [id], onDelete: Cascade)
+  message     String
+  level       String    @default("INFO")
+  timestamp   DateTime  @default(now())
+}
+
+model Result {
+  id        String   @id @default(cuid())
+  nodeId    String   @unique
+  node      Node     @relation(fields: [nodeId], references: [id], onDelete: Cascade)
+  content   String   // Markdown or JSON stringified payload
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  startTime   DateTime
+  endTime     DateTime
+  isAiScheduled Boolean @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Habit {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  frequency   String   // DAILY, WEEKLY
+  streak      Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Briefing {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type        String   // MORNING, NIGHT
+  content     String   // Markdown summary of what to do/what was done
+  createdAt   DateTime @default(now())
+}
