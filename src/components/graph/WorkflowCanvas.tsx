@@ -20,6 +20,7 @@ import CustomNode from './CustomNode';
 import dagre from 'dagre';
 import { Button } from '@/components/ui/button';
 import { Play, Loader2, FastForward, Activity, Clock, AlertTriangle } from 'lucide-react';
+import PlannerDebugPanel from '@/components/layout/PlannerDebugPanel';
 
 const nodeTypes: NodeTypes = {
   milestone: CustomNode,
@@ -134,19 +135,22 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'TB') => 
   return { nodes: newNodes, edges: newEdges, criticalNodeIds };
 };
 
-const initialNodes: Node[] = [];
-const initialEdges: Edge[] = [];
+interface WorkflowCanvasProps {
+  dynamicData?: any;
+  workflowId?: string | null;
+  deadline?: string;
+  plannerDebugInfo?: any;
+}
 
-export default function WorkflowCanvas({ dynamicData, workflowId, deadline }: { dynamicData?: any, workflowId?: string | null, deadline?: string }) {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [criticalNodeIds, setCriticalNodeIds] = useState<Set<string>>(new Set());
-  
+export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plannerDebugInfo }: WorkflowCanvasProps) {
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
   const [isExecuting, setIsExecuting] = useState(false);
   const [isAutoExecuting, setIsAutoExecuting] = useState(false);
   const [resultsMap, setResultsMap] = useState<Record<string, string>>({});
   const [pipelineMap, setPipelineMap] = useState<Record<string, any[]>>({});
+  const [criticalNodeIds, setCriticalNodeIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     if (dynamicData && dynamicData.nodes && dynamicData.edges) {
@@ -391,7 +395,7 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline }: { 
         </div>
 
         {metrics && (
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <div className="h-11 flex items-center bg-neutral-900 border border-neutral-800 rounded-xl px-4 gap-3 shadow-inner">
               <Activity className="w-4 h-4 text-emerald-400" />
               <div className="flex flex-col">
@@ -415,6 +419,13 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline }: { 
                 <span className="text-sm font-bold text-white">{metrics.riskScore}</span>
               </div>
             </div>
+            
+            {plannerDebugInfo && (
+              <>
+                <div className="w-[1px] h-8 bg-neutral-800 mx-2" />
+                <PlannerDebugPanel debugInfo={plannerDebugInfo} />
+              </>
+            )}
           </div>
         )}
       </div>

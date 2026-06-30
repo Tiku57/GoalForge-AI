@@ -50,7 +50,6 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-screen bg-black text-white overflow-hidden">
-      <PlannerDebugPanel debugInfo={plannerDebugInfo} />
       {/* Sidebar */}
       <aside className="w-80 border-r border-neutral-800 bg-neutral-950 p-6 flex flex-col gap-6 relative z-10 shadow-2xl">
         <div>
@@ -170,9 +169,14 @@ export default function DashboardPage() {
       <main className="flex-1 relative bg-[#0a0a0a]">
         <div className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] ${workflowData?.metrics?.riskScore === 'Critical' ? 'from-red-900/20' : 'from-indigo-900/10'} via-black to-black pointer-events-none z-0 transition-colors duration-1000`} />
         {workflowData ? (
-          <WorkflowCanvas dynamicData={workflowData} workflowId={workflowId} deadline={deadline} />
+          <WorkflowCanvas dynamicData={workflowData} workflowId={workflowId} deadline={deadline} plannerDebugInfo={plannerDebugInfo} />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-neutral-500 flex-col gap-4 z-10">
+            {plannerDebugInfo && (
+               <div className="absolute top-4 right-4 z-[100]">
+                 <PlannerDebugPanel debugInfo={plannerDebugInfo} />
+               </div>
+            )}
             <div className="w-16 h-16 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center shadow-2xl">
               <Target className="w-8 h-8 text-neutral-600" />
             </div>
