@@ -60,38 +60,6 @@ Built for **founders, engineers, product managers, and ambitious individuals**, 
 
 ---
 
-## 📸 Screenshots
-
-<details>
-<summary><b>1. Dashboard & Planning Graph</b></summary>
-<br>
-<i>Interactive DAG rendering generated workflows.</i>
-<img src="https://via.placeholder.com/1200x800.png?text=Dashboard+%26+React+Flow+Canvas" alt="Dashboard View">
-</details>
-
-<details>
-<summary><b>2. Interactive Node Inspector</b></summary>
-<br>
-<i>Deep dive into agent execution logs and deliverables.</i>
-<img src="https://via.placeholder.com/1200x800.png?text=Interactive+Node+Inspector" alt="Node Inspector">
-</details>
-
-<details>
-<summary><b>3. Live Execution & Analytics</b></summary>
-<br>
-<i>Real-time probability metrics and autonomous agent processing.</i>
-<img src="https://via.placeholder.com/1200x800.png?text=Live+Execution+%26+Analytics" alt="Live Execution">
-</details>
-
-<details>
-<summary><b>4. Cinematic Demo Mode</b></summary>
-<br>
-<i>An immersive walkthrough of the platform's capabilities.</i>
-<img src="https://via.placeholder.com/1200x800.png?text=Cinematic+Demo+Mode" alt="Demo Mode">
-</details>
-
----
-
 ## 🛠 Tech Stack
 
 | Category | Technology |
@@ -262,15 +230,9 @@ Contributions are what make the open source community such an amazing place to l
 
 ---
 
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
 ## 👨‍💻 Credits
 
-**Built with ❤️ by Aaditya Sattawan**
+**Built by Aaditya Sattawan**
 
 - **GitHub:** [@Tiku57](https://github.com/Tiku57)
 - **LinkedIn:** [Aaditya Sattawan](https://www.linkedin.com/in/aaditya-sattawan)
