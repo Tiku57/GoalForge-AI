@@ -1,91 +1,79 @@
 <div align="center">
   
-# GoalForge AI
+# ⚡️ GoalForge AI
 
-**Autonomous AI Chief of Staff**
+**The Autonomous Chief of Staff & Multi-Agent Execution Engine**
 
-*Stop managing tasks. Start managing outcomes.*
+[![Next.js](https://img.shields.io/badge/Next.js-16.2.9-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Gemini 2.5](https://img.shields.io/badge/Gemini_2.5_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![React Flow](https://img.shields.io/badge/React_Flow-FF0072?style=for-the-badge&logo=react&logoColor=white)](https://reactflow.dev/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Prisma](https://img.shields.io/badge/Prisma-ORM-1B222D?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
-[![Gemini](https://img.shields.io/badge/Gemini-AI-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev/)
-[![React Flow](https://img.shields.io/badge/React_Flow-Nodes-FF007A?style=for-the-badge&logo=react)](https://reactflow.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Vibe2Ship](https://img.shields.io/badge/Vibe2Ship-Hackathon-FF6B6B?style=for-the-badge)](https://vibe2ship.com/)
+**Finalist Submission for Vibe2Ship Hackathon 2026**
 
 </div>
 
 ---
 
-## 🚀 About GoalForge AI
+## 🚀 Overview
 
-### The Problem
-Existing productivity tools only remind users. They give you a blank slate and wait for you to figure out what needs to be done. When deadlines loom, to-do lists become overwhelming, critical bottlenecks are missed, and goals are abandoned.
+GoalForge AI is a premium, production-grade autonomous agent pipeline that transforms ambitious, high-level objectives into actionable, mathematically prioritized Dependency Graphs (DAGs), and then autonomously executes them using an ensemble of specialized AI models.
 
-### The Solution
-**GoalForge AI** is an autonomous AI Chief of Staff that actively plans, prioritizes, schedules, executes, and adapts until your goal is complete.
+It functions as your **Autonomous Chief of Staff**, bridging the gap between "having an idea" and "having the deliverables ready".
 
-Instead of managing tasks, you manage outcomes. You provide the objective (e.g., *"Launch an AI startup and raise seed funding"*), and GoalForge AI dynamically generates a complete critical path DAG (Directed Acyclic Graph). It leverages specialized multi-agent pipelines to autonomously research, execute, review, and validate deliverables for each node, ensuring you hit your deadlines.
+## ✨ Core Features
 
-### Key Innovations
-- **AI Planning:** Converts abstract goals into structured dependency graphs.
-- **Multi-Agent Execution:** Dedicated agents (Research, Planner, Execute, Review) handle specific task types.
-- **Critical Path Analysis:** Mathematically determines which tasks will delay your entire project.
-- **Deadline Risk Prediction:** Calculates success probability, buffer days, and risk profiling.
-- **Intelligent Offline Planner:** Never lose productivity. If the API fails, our local heuristic engine seamlessly builds realistic offline DAGs.
-- **AI Deliverables:** Autonomously generates the actual work (documents, plans, code) and attaches it to tasks.
-- **Explainable AI:** Complete transparency into how the AI arrived at its decisions.
+* **🧠 AI Goal Planning:** Input any objective, and GoalForge will generate a complete, dependency-aware master plan using Gemini 2.5 Flash.
+* **🕸️ Interactive React Flow DAG:** A beautifully crafted, interactive pipeline visualization to track milestones, tasks, and actions.
+* **📈 Dynamic Execution Analytics:** Real-time probability calculations, Risk Score assignment, and Buffer Days simulation.
+* **🤖 Auto Execute Workflow:** Engaging an autopilot sequence that orchestrates multiple autonomous agents (Planner, Researcher, Writer, Reviewer) over the graph.
+* **📡 Live Streaming Execution:** Watch the AI's internal monologue and sub-task streaming directly on the dashboard.
+* **🛡️ Intelligent Offline Planner:** A resilient heuristic fallback engine that gracefully handles API limits to ensure 100% uptime.
+* **⚡ Production-Grade UI/UX:** Built with glassmorphism, cinematic Framer Motion animations, minimal aesthetics, and a top-right live telemetry widget.
+* **📄 Markdown & PDF Export:** Seamlessly convert agent deliverables into high-quality, sanitized PDFs.
 
 ---
 
-## ✨ Features
+## 🛠️ Architecture
 
-| Feature | Description |
-|---------|-------------|
-| **AI Planner** | Instantly generates comprehensive workflows from a single objective prompt. |
-| **Multi-Agent Pipeline** | Distinct AI personas handle specialized steps (Research, Execute, Review). |
-| **Critical Path Engine** | Highlights topological bottlenecks to focus your attention on what matters. |
-| **Offline Intelligence** | A sophisticated local planner seamlessly takes over if API rate limits are hit. |
-| **Dynamic Analytics** | Real-time calculation of success probability and buffer days. |
-| **One-Click Export** | Export the entire workflow into a beautifully formatted professional PDF. |
+GoalForge AI is built on a modern, bleeding-edge tech stack designed for speed, resilience, and real-time feedback.
 
----
+### **Frontend**
+* **Next.js 16.2.9 (Turbopack):** Lightning-fast rendering and API routes.
+* **React 19:** Utilizing the latest concurrent features.
+* **Tailwind CSS v4:** Heavy use of modern CSS variables, glassmorphism, and minimal gradients.
+* **React Flow:** Advanced DAG rendering with `dagre` for automated node positioning.
+* **Framer Motion:** Cinematic UI transitions and modal animations.
 
-## 🏗 Architecture
-
-```mermaid
-graph TD
-    User([User Objective]) --> Planner[AI Planner Agent]
-    Planner --> DAG[Workflow Graph Generation]
-    DAG --> CP[Critical Path & Metrics Analysis]
-    CP --> Execute[Multi-Agent Execution Pipeline]
-    
-    Execute --> Research[Research Agent]
-    Execute --> Action[Action Agent]
-    Execute --> Review[Review Agent]
-    
-    Research --> Deliverables[(AI Deliverables)]
-    Action --> Deliverables
-    Review --> Deliverables
-    
-    Deliverables --> UI[Interactive Dashboard]
-```
-
-### Tech Stack
-| Category | Technology |
-|----------|------------|
-| **Frontend** | Next.js 16 (App Router), React 18, Framer Motion |
-| **Styling** | Tailwind CSS, Lucide Icons |
-| **Backend** | Next.js API Routes, Node.js |
-| **Database** | SQLite (Development), Prisma ORM |
-| **AI Engine** | Google Gemini (2.5 Flash Lite) |
-| **Visualization** | React Flow (DAG Rendering) |
+### **Backend & AI Pipeline**
+* **Streaming Edge APIs:** Real-time token streaming using `TextEncoderStream`.
+* **Gemini 2.5 Flash (`@google/genai`):** The primary brain behind planning and execution.
+* **Offline Heuristic Engine:** A bespoke fallback DAG generator that calculates realistic dependencies when offline.
+* **Prisma (SQLite):** Lightweight persistence layer for caching workflows and deliverables.
 
 ---
 
-## 💻 Installation
+## 🎬 Watch Live Demo
+
+The application includes an immersive, cinematic walkthrough that simulates the entire product experience:
+
+1. **Open Landing Page:** Navigate to `/`.
+2. **Watch Live Demo:** Click the primary CTA to trigger the 7-step interactive presentation.
+3. **Experience the Flow:** Watch as the application automatically inputs a goal, generates a graph, triggers the Auto-Execute pipeline, produces a Deliverable via the Node Inspector, and calculates a final Risk Summary.
+
+---
+
+## 💻 Installation Guide
+
+Run GoalForge AI locally in minutes.
+
+### Prerequisites
+* Node.js (v20+)
+* A Google Gemini API Key
 
 ### 1. Clone the repository
 ```bash
@@ -98,121 +86,63 @@ cd GoalForge-AI
 npm install
 ```
 
-### 3. Configure environment variables
-Create a `.env.local` file based on `.env.example`:
+### 3. Environment Setup
+Copy the example environment file:
 ```bash
-cp .env.example .env.local
+cp .env.example .env
+```
+Open `.env` and add your keys. Only `GEMINI_API_KEY` is strictly required for the core workflow to function.
+```env
+# Google Gemini API
+GEMINI_API_KEY="your-gemini-api-key"
+
+# Database (SQLite defaults to file:./dev.db)
+DATABASE_URL="file:./dev.db"
 ```
 
-### 4. Setup Database
+### 4. Initialize Database
 ```bash
-npx prisma generate
 npx prisma db push
+npx prisma generate
 ```
 
-### 5. Run Development Server
+### 5. Start the Development Server
 ```bash
 npm run dev
 ```
+Navigate to `http://localhost:3000`.
 
-### 6. Build for Production
-```bash
-npm run build
-npm start
+---
+
+## 📂 Project Structure
+
+```
+├── prisma/                 # Database schema and SQLite DB
+├── public/                 # Static assets and icons
+├── src/
+│   ├── app/                # Next.js App Router (Landing, Dashboard, APIs)
+│   ├── components/
+│   │   ├── graph/          # React Flow Canvas and Nodes
+│   │   ├── landing/        # Hero, Navbar, Demo Modal
+│   │   ├── layout/         # Node Inspector, Debug Panel
+│   │   └── ui/             # Reusable UI primitives
+│   └── lib/                # Utilities, Types, and Formatting
+├── .env.example            # Environment variables template
+├── package.json            # Dependencies
+└── README.md               # Documentation
 ```
 
 ---
 
-## 🔑 Environment Variables
+## 🎨 UI/UX Philosophy
 
-| Variable | Description |
-|----------|-------------|
-| `GEMINI_API_KEY` | Your Google Gemini API Key required for the AI pipeline. |
-| `DATABASE_URL` | The SQLite/PostgreSQL connection string for Prisma. |
-
----
-
-## 📂 Folder Structure
-
-```text
-src
- ├── app               # Next.js App Router (Pages & API)
- ├── components        # React Components
- │   ├── graph         # React Flow DAG Components
- │   ├── layout        # Global Layouts & Navbar
- │   └── ui            # Reusable UI Elements
- ├── lib               # Utilities & Services
- │   ├── agents        # AI Multi-Agent Pipeline
- │   └── prisma        # Database Client
- ├── prisma            # Prisma Schema
-```
-
----
-
-## 🧠 AI Pipeline
-
-GoalForge uses a specialized swarm of agents to accomplish tasks:
-
-1. **Planner Agent:** Breaks down abstract user goals into strict JSON topological DAGs.
-2. **Research Agent:** Gathers context and formulates strategies for complex tasks.
-3. **Execute Agent:** Does the actual heavy lifting (writes code, drafts documents, creates plans).
-4. **Review Agent:** Validates the output against the original user objective.
-
-### Offline Intelligence
-GoalForge features a **Local Autonomous Planning Engine**. If the Gemini API is unavailable (e.g. Rate Limits or Network Loss), the offline engine seamlessly parses your objective and generates highly realistic, heuristic-based workflows (e.g., custom DAGs for Startups vs Software). Users never lose productivity.
-
----
-
-## 📊 Dynamic Analytics
-GoalForge doesn't just list tasks; it understands time.
-- **Success Probability:** Calculated based on remaining tasks vs remaining time.
-- **Buffer Days:** Determines exactly how many days you can safely afford to lose.
-- **Risk Score:** Flags projects as Low, Medium, or Critical risk.
-- **Critical Path:** Identifies the longest sequence of dependent tasks.
-
----
-
-## 🥊 Why GoalForge AI is Different
-
-| Feature | GoalForge AI | Notion | Trello | Google Calendar |
-|---------|-------------|--------|--------|-----------------|
-| **Autonomous Planning** | ✅ | ❌ | ❌ | ❌ |
-| **AI Execution** | ✅ | ❌ | ❌ | ❌ |
-| **Critical Path Math** | ✅ | ❌ | ❌ | ❌ |
-| **Dependency Graphs** | ✅ | ❌ | ❌ | ❌ |
-
----
-
-## 🏆 Hackathon Alignment (Vibe2Ship)
-
-GoalForge AI directly solves the Vibe2Ship problem statement: **"Existing productivity tools only remind users."**
-- **Proactive Execution:** It doesn't just remind you; it does the work for you.
-- **Intelligent Prioritization:** Topological sorting ensures you never work on blocked tasks.
-- **Context-Aware Assistance:** The AI analyzes your exact deadline and adjusts task density accordingly.
-
----
-
-## 🗺 Future Roadmap
-- [ ] Google Calendar 2-Way Sync
-- [ ] Slack & WhatsApp Reminders
-- [ ] Multi-user Collaborative Workspaces
-- [ ] RAG Memory for long-term project context
-- [ ] Mobile App (React Native)
-
----
-
-## 📄 License
-This project is licensed under the MIT License.
-
-## 👨‍💻 Author
-**Aaditya Sattawan**
-- GitHub: [@Tiku57](https://github.com/Tiku57)
-- LinkedIn: [aaditya-sattawan](https://www.linkedin.com/in/aaditya-sattawan)
+GoalForge AI strictly adheres to premium design aesthetics:
+- **No overlapping elements:** Tooling (like the AI Status Indicator) participates naturally in the layout.
+- **Cinematic Transitions:** Layout shifts are masked via `AnimatePresence`.
+- **Developer Experience:** Detailed offline fallback logs are restricted to development modes, keeping production environments clean.
 
 ---
 
 <div align="center">
-  
-⭐ **If you found GoalForge AI interesting, consider giving it a star!** ⭐
-
+  <p>Built with precision for <strong>Vibe2Ship 2026</strong>.</p>
 </div>
