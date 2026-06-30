@@ -22,9 +22,9 @@ GoalForge AI is an autonomous, multi-agent AI planner that transforms high-level
 
 **Experience GoalForge AI live in your browser:**
 
-### 👉 [https://goal-forge-ai-silk.vercel.app/](https://goal-forge-ai-silk.vercel.app/) 👈
+### [https://goal-forge-ai-silk.vercel.app](https://goal-forge-ai-silk.vercel.app) 
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://goal-forge-ai-silk.vercel.app/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://goal-forge-ai-silk.vercel.app)
 
 ---
 
