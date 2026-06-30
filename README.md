@@ -1,79 +1,134 @@
 <div align="center">
   
-# ⚡️ GoalForge AI
+# 🤖 GoalForge AI
+**Your Autonomous Chief of Staff**
 
-**The Autonomous Chief of Staff & Multi-Agent Execution Engine**
+GoalForge AI is an autonomous, multi-agent AI planner that transforms high-level goals into actionable, interactive, and visually stunning execution workflows.
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.2.9-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Gemini 2.5](https://img.shields.io/badge/Gemini_2.5_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
-[![React Flow](https://img.shields.io/badge/React_Flow-FF0072?style=for-the-badge&logo=react&logoColor=white)](https://reactflow.dev/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-[![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
-
-**Finalist Submission for Vibe2Ship Hackathon 2026**
+[![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.0-20232A?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://www.prisma.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Gemini API](https://img.shields.io/badge/Gemini_2.5_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 </div>
 
 ---
 
-## 🚀 Overview
+## 🚀 Live Demo
 
-GoalForge AI is a premium, production-grade autonomous agent pipeline that transforms ambitious, high-level objectives into actionable, mathematically prioritized Dependency Graphs (DAGs), and then autonomously executes them using an ensemble of specialized AI models.
+**Experience GoalForge AI live in your browser:**
 
-It functions as your **Autonomous Chief of Staff**, bridging the gap between "having an idea" and "having the deliverables ready".
+### 👉 [https://goal-forge-ai-silk.vercel.app/](https://goal-forge-ai-silk.vercel.app/) 👈
 
-## ✨ Core Features
-
-* **🧠 AI Goal Planning:** Input any objective, and GoalForge will generate a complete, dependency-aware master plan using Gemini 2.5 Flash.
-* **🕸️ Interactive React Flow DAG:** A beautifully crafted, interactive pipeline visualization to track milestones, tasks, and actions.
-* **📈 Dynamic Execution Analytics:** Real-time probability calculations, Risk Score assignment, and Buffer Days simulation.
-* **🤖 Auto Execute Workflow:** Engaging an autopilot sequence that orchestrates multiple autonomous agents (Planner, Researcher, Writer, Reviewer) over the graph.
-* **📡 Live Streaming Execution:** Watch the AI's internal monologue and sub-task streaming directly on the dashboard.
-* **🛡️ Intelligent Offline Planner:** A resilient heuristic fallback engine that gracefully handles API limits to ensure 100% uptime.
-* **⚡ Production-Grade UI/UX:** Built with glassmorphism, cinematic Framer Motion animations, minimal aesthetics, and a top-right live telemetry widget.
-* **📄 Markdown & PDF Export:** Seamlessly convert agent deliverables into high-quality, sanitized PDFs.
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://goal-forge-ai-silk.vercel.app/)
 
 ---
 
-## 🛠️ Architecture
+## 📖 Project Overview
 
-GoalForge AI is built on a modern, bleeding-edge tech stack designed for speed, resilience, and real-time feedback.
+GoalForge AI bridges the gap between ambitious ideas and systematic execution. It solves the "blank canvas problem" by taking a single goal from the user and orchestrating a team of autonomous AI agents to break it down, analyze risks, sequence tasks, and execute them.
 
-### **Frontend**
-* **Next.js 16.2.9 (Turbopack):** Lightning-fast rendering and API routes.
-* **React 19:** Utilizing the latest concurrent features.
-* **Tailwind CSS v4:** Heavy use of modern CSS variables, glassmorphism, and minimal gradients.
-* **React Flow:** Advanced DAG rendering with `dagre` for automated node positioning.
-* **Framer Motion:** Cinematic UI transitions and modal animations.
+Built for **founders, engineers, product managers, and ambitious individuals**, GoalForge AI is different because it doesn't just give you a text list—it gives you an interactive graph, a timeline, risk profiling, and an execution engine that does the heavy lifting for you.
 
-### **Backend & AI Pipeline**
-* **Streaming Edge APIs:** Real-time token streaming using `TextEncoderStream`.
-* **Gemini 2.5 Flash (`@google/genai`):** The primary brain behind planning and execution.
-* **Offline Heuristic Engine:** A bespoke fallback DAG generator that calculates realistic dependencies when offline.
-* **Prisma (SQLite):** Lightweight persistence layer for caching workflows and deliverables.
+### Key Innovations:
+- **Visual Node Graph:** Real-time generation of dependency graphs powered by React Flow.
+- **Agentic Workflows:** Dedicated Research, Execute, and Optimize agents.
+- **Predictive Risk Analytics:** On-the-fly calculation of success probabilities and buffer days.
+- **Fluid Responsive Design:** A masterclass in responsive UI, perfectly scaling from 320px mobile screens to ultra-wide desktop monitors.
 
 ---
 
-## 🎬 Watch Live Demo
+## ✨ Key Features
 
-The application includes an immersive, cinematic walkthrough that simulates the entire product experience:
-
-1. **Open Landing Page:** Navigate to `/`.
-2. **Watch Live Demo:** Click the primary CTA to trigger the 7-step interactive presentation.
-3. **Experience the Flow:** Watch as the application automatically inputs a goal, generates a graph, triggers the Auto-Execute pipeline, produces a Deliverable via the Node Inspector, and calculates a final Risk Summary.
+- 🧠 **AI-Powered Planning:** Converts abstract goals into detailed, chronological node graphs.
+- 🤖 **Multi-Agent Workflow:** Different AI personas (Research, Execute, Optimize) tackle specialized tasks.
+- 🗺️ **React Flow Visual Planner:** Interactive drag-and-drop DAG (Directed Acyclic Graph) interface.
+- 📦 **Deliverables Tracking:** Captures outputs, markdown documents, and logs from each agent.
+- ⏱️ **Timeline Generation:** Context-aware scheduling and deadline tracking.
+- 🔗 **Dependency Analysis:** Identifies bottlenecks and critical paths dynamically.
+- ⚠️ **Risk Analysis:** Estimates success probabilities based on complexity and deadlines.
+- 🚀 **Autonomous Execution:** The "Autopilot" executes entire pipelines step-by-step without human intervention.
+- 💡 **AI Recommendations:** Suggests the next best action and optimization strategies.
+- 🔍 **Interactive Node Inspector:** A robust bottom-sheet/sidebar for examining node logs and deliverables.
+- 📊 **Analytics Dashboard:** Keep track of project velocity and completion metrics.
+- 💻 **Professional UI/UX:** A dark-mode first, glassmorphic SaaS interface.
+- 📱 **Fully Responsive:** Fluid mechanics replacing rigid breakpoints, offering an uncompromising mobile experience.
 
 ---
 
-## 💻 Installation Guide
+## 📸 Screenshots
 
-Run GoalForge AI locally in minutes.
+<details>
+<summary><b>1. Dashboard & Planning Graph</b></summary>
+<br>
+<i>Interactive DAG rendering generated workflows.</i>
+<img src="https://via.placeholder.com/1200x800.png?text=Dashboard+%26+React+Flow+Canvas" alt="Dashboard View">
+</details>
 
-### Prerequisites
-* Node.js (v20+)
-* A Google Gemini API Key
+<details>
+<summary><b>2. Interactive Node Inspector</b></summary>
+<br>
+<i>Deep dive into agent execution logs and deliverables.</i>
+<img src="https://via.placeholder.com/1200x800.png?text=Interactive+Node+Inspector" alt="Node Inspector">
+</details>
+
+<details>
+<summary><b>3. Live Execution & Analytics</b></summary>
+<br>
+<i>Real-time probability metrics and autonomous agent processing.</i>
+<img src="https://via.placeholder.com/1200x800.png?text=Live+Execution+%26+Analytics" alt="Live Execution">
+</details>
+
+<details>
+<summary><b>4. Cinematic Demo Mode</b></summary>
+<br>
+<i>An immersive walkthrough of the platform's capabilities.</i>
+<img src="https://via.placeholder.com/1200x800.png?text=Cinematic+Demo+Mode" alt="Demo Mode">
+</details>
+
+---
+
+## 🛠 Tech Stack
+
+| Category | Technology |
+| :--- | :--- |
+| **Frontend** | Next.js 15 (App Router), React 19, TypeScript |
+| **Styling** | Tailwind CSS v4, Framer Motion, Lucide Icons |
+| **Database** | PostgreSQL (Neon serverless) |
+| **ORM** | Prisma |
+| **AI Layer** | Google Gemini API (2.5 Flash / Pro) |
+| **Visualization**| React Flow, Dagre (Layout Engine) |
+| **State Management**| React Hooks, Local Component State |
+| **Deployment** | Vercel |
+
+---
+
+## 🏗 Architecture
+
+GoalForge AI employs a modern serverless architecture utilizing the Next.js App Router for optimal rendering and API orchestration.
+
+```mermaid
+graph TD
+    Client[Client UI - React Flow] --> |API Routes| NextJS[Next.js Server]
+    NextJS --> |Prompts & Context| Gemini[Gemini AI Model]
+    NextJS --> |Read/Write| Prisma[Prisma ORM]
+    Prisma --> |Connection Pool| DB[(Neon PostgreSQL)]
+    Gemini --> |Structured JSON| NextJS
+    NextJS --> |Parsed Workflows| Client
+```
+
+- **Client:** React Flow handles the intensive DAG layout engine (via Dagre) while Framer Motion handles transition physics.
+- **API Layer:** Next.js Route Handlers manage agent instructions and state persistence.
+- **AI Engine:** Google Gemini parses complex instructions using strict JSON schema validation.
+- **Database:** Prisma syncs workflow nodes, edge definitions, and execution logs to a Neon PostgreSQL instance.
+
+---
+
+## ⚙️ Installation
 
 ### 1. Clone the repository
 ```bash
@@ -86,27 +141,16 @@ cd GoalForge-AI
 npm install
 ```
 
-### 3. Environment Setup
-Copy the example environment file:
-```bash
-cp .env.example .env
-```
-Open `.env` and add your keys. Only `GEMINI_API_KEY` is strictly required for the core workflow to function.
-```env
-# Google Gemini API
-GEMINI_API_KEY="your-gemini-api-key"
+### 3. Setup Environment Variables
+Create a `.env` file in the root directory (see [Environment Variables](#-environment-variables)).
 
-# Database (SQLite defaults to file:./dev.db)
-DATABASE_URL="file:./dev.db"
-```
-
-### 4. Initialize Database
+### 4. Setup Prisma Database
 ```bash
-npx prisma db push
 npx prisma generate
+npx prisma db push
 ```
 
-### 5. Start the Development Server
+### 5. Run the development server
 ```bash
 npm run dev
 ```
@@ -114,42 +158,125 @@ Navigate to `http://localhost:3000`.
 
 ---
 
-## 📂 Project Structure
+## 🔐 Environment Variables
+
+Create a `.env` file at the root of your project:
+
+```env
+# Google Gemini API key for AI Agent orchestration
+GEMINI_API_KEY="your_gemini_api_key"
+
+# Neon PostgreSQL connection string
+DATABASE_URL="postgresql://user:password@endpoint/dbname?sslmode=require"
+```
+
+---
+
+## 📁 Folder Structure
 
 ```
-├── prisma/                 # Database schema and SQLite DB
-├── public/                 # Static assets and icons
+GoalForge-AI/
+├── prisma/                 # Database schema and migrations
+│   └── schema.prisma       # Prisma models (Workflow, Node, Edge, Task)
 ├── src/
-│   ├── app/                # Next.js App Router (Landing, Dashboard, APIs)
-│   ├── components/
-│   │   ├── graph/          # React Flow Canvas and Nodes
-│   │   ├── landing/        # Hero, Navbar, Demo Modal
-│   │   ├── layout/         # Node Inspector, Debug Panel
-│   │   └── ui/             # Reusable UI primitives
-│   └── lib/                # Utilities, Types, and Formatting
-├── .env.example            # Environment variables template
-├── package.json            # Dependencies
-└── README.md               # Documentation
+│   ├── app/                # Next.js App Router
+│   │   ├── api/            # API Routes (Agents, Debug, Demo)
+│   │   ├── dashboard/      # Main Application UI
+│   │   ├── demo/           # Cinematic Demo View
+│   │   └── globals.css     # Global Tailwind utilities
+│   ├── components/         # React Components
+│   │   ├── graph/          # React Flow Canvas, Custom Nodes
+│   │   ├── layout/         # Sidebars, Headers, Modals
+│   │   ├── landing/        # Landing Page & Demo elements
+│   │   └── ui/             # Shared UI components (Buttons, Logos)
+│   └── lib/                # Utility functions and Prisma client
+└── package.json            # Dependencies and scripts
 ```
 
 ---
 
-## 🎨 UI/UX Philosophy
+## 🔄 The Workflow Engine
 
-GoalForge AI strictly adheres to premium design aesthetics:
-- **No overlapping elements:** Tooling (like the AI Status Indicator) participates naturally in the layout.
-- **Cinematic Transitions:** Layout shifts are masked via `AnimatePresence`.
-- **Developer Experience:** Detailed offline fallback logs are restricted to development modes, keeping production environments clean.
+How GoalForge AI works under the hood:
+
+1. **Goal Input:** The user provides a high-level goal and optional deadline.
+2. **Planning Phase:** The `Planning Agent` dissects the goal into a Directed Acyclic Graph (DAG) of logical steps.
+3. **Graph Rendering:** React Flow and Dagre render the timeline, organizing nodes by dependency.
+4. **Agent Execution:** The `Execute Agent` processes nodes synchronously or via autopilot.
+5. **Deliverables:** Artifacts (markdown, code, logs) are generated and stored in the database.
+6. **Risk Analysis:** Completion metrics, buffer days, and critical paths are dynamically calculated based on progress.
 
 ---
 
-## 📫 Contact
+## 🎨 Design Philosophy
 
-Feel free to reach out for collaborations or opportunities!
+- **AI-First:** The UI is designed to accommodate AI output, not the other way around. Context windows are vast, and logs are deeply nested.
+- **Autonomous Planning:** Emphasizing a "hands-off" approach where the AI orchestrates the meta-work.
+- **Modern SaaS UI:** Embracing deep dark mode, high-contrast borders, fluid transitions, and glassmorphism.
+- **Fluid Responsiveness:** The UI adapts perfectly using `clamp()`, `flex`, and `grid` systems rather than fixed pixel dimensions.
 
-- **GitHub:** [Tiku57](https://github.com/Tiku57)
-- **LinkedIn:** [Aaditya Sattawan](https://www.linkedin.com/in/aaditya-sattawan/)
+---
+
+## ⚡ Performance
+
+- **App Router:** Utilizes Next.js Server Components to reduce client-side bundle size.
+- **Optimized Rendering:** React Flow's viewport only renders visible nodes, preventing DOM bloat on massive workflows.
+- **Edge Deployment Ready:** Completely compatible with Vercel's edge network and Neon's serverless pooling.
+
+---
+
+## ☁️ Deployment
+
+GoalForge AI is fully optimized for **Vercel** and **Neon**.
+
+### Vercel Deployment
+1. Import your GitHub repository to Vercel.
+2. Add the `GEMINI_API_KEY` and `DATABASE_URL` environment variables.
+3. Vercel will automatically detect Next.js and run `npm run build`.
+4. Ensure your Prisma `postinstall` script runs `npx prisma generate`.
+
+### Database Production Notes
+- Use connection pooling for Neon in production to prevent connection exhaustion during concurrent AI agent writes.
+
+---
+
+## 🗺 Future Roadmap
+
+- [ ] **Multi-LLM Support:** Seamless switching between Claude, GPT-4, and Gemini.
+- [ ] **Real-time Collaboration:** Multiplayer cursor support for team workflows.
+- [ ] **Export Formats:** Export workflows to PDF, Notion, or Jira.
+- [ ] **Agent Marketplace:** Custom agent instructions and personas.
+- [ ] **Persistent AI Memory:** Long-term memory storage using vector databases (Pinecone/Weaviate).
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 👨‍💻 Credits
+
+**Built with ❤️ by Aaditya Sattawan**
+
+- **GitHub:** [@Tiku57](https://github.com/Tiku57)
+- **LinkedIn:** [Aaditya Sattawan](https://www.linkedin.com/in/aaditya-sattawan)
+
+---
 
 <div align="center">
-  <p>Built with precision for <strong>Vibe2Ship 2026</strong>.</p>
+  <i>If you found this project helpful, please consider giving it a ⭐ on GitHub!</i>
 </div>
