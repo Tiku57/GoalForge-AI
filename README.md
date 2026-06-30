@@ -15,8 +15,6 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Vibe2Ship](https://img.shields.io/badge/Vibe2Ship-Hackathon-FF6B6B?style=for-the-badge)](https://vibe2ship.com/)
 
-![GoalForge AI Banner](/assets/banner.png)
-
 </div>
 
 ---
@@ -84,29 +82,6 @@ graph TD
 | **Database** | SQLite (Development), Prisma ORM |
 | **AI Engine** | Google Gemini (2.5 Flash Lite) |
 | **Visualization** | React Flow (DAG Rendering) |
-
----
-
-## 📸 Screenshots
-
-![GoalForge Dashboard](/assets/dashboard.png)
-*The GoalForge AI Interactive Dashboard.*
-
-![Workflow Graph](/assets/workflow.png)
-*Auto-generated topological dependency graph with critical path highlighting.*
-
-![Node Inspector](/assets/node.png)
-*Detailed AI execution deliverables and status.*
-
----
-
-## 🎮 Demo
-
-- **Live Demo:** [Placeholder Link]
-- **Video Demo:** [Placeholder Link]
-- **Pitch Deck:** [Placeholder Link]
-
-![GoalForge Demo](/assets/demo.gif)
 
 ---
 
@@ -232,8 +207,7 @@ This project is licensed under the MIT License.
 ## 👨‍💻 Author
 **Aaditya Sattawan**
 - GitHub: [@Tiku57](https://github.com/Tiku57)
-- LinkedIn: [Your LinkedIn]
-- Portfolio: [Your Portfolio]
+- LinkedIn: [aaditya-sattawan](https://www.linkedin.com/in/aaditya-sattawan)
 
 ---
 
