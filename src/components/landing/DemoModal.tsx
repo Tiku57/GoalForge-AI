@@ -194,8 +194,8 @@ export default function DemoModal({ onClose }: DemoModalProps) {
                   </motion.div>
                 )}
 
-                {/* STEP 3 & 4 & 5 & 6 (Canvas visible) */}
-                {step >= 3 && step <= 6 && (
+                {/* STEP 3 & 4 & 5 (Canvas visible) */}
+                {step >= 3 && step <= 5 && (
                   <motion.div key="step-canvas" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
                     {/* Placeholder for the Graph. We simulate the demo page look here. */}
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-black to-black pointer-events-none z-0" />
@@ -205,64 +205,86 @@ export default function DemoModal({ onClose }: DemoModalProps) {
                       {/* Top row */}
                       <div className="flex justify-between items-start">
                         {/* Active Objective */}
-                        <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="bg-neutral-900/80 backdrop-blur border border-white/10 rounded-xl p-4 w-72">
+                        <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="bg-neutral-900/80 backdrop-blur border border-white/10 rounded-xl p-4 w-72 shadow-lg">
                           <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mb-2">Active Objective</div>
                           <div className="text-sm font-semibold text-white">Organise a college technical fest</div>
                         </motion.div>
 
-                        {/* Metrics Bar */}
-                        <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="flex gap-4">
-                          <div className="bg-neutral-900/80 backdrop-blur border border-white/10 rounded-xl px-4 py-2 flex items-center gap-3">
-                            <Activity className="w-4 h-4 text-emerald-400" />
-                            <div className="flex flex-col">
-                              <span className="text-[9px] text-neutral-500 uppercase tracking-widest font-bold">Success Prob</span>
-                              <span className="text-sm font-bold text-white">
-                                {step === 3 ? '45%' : step === 4 ? '72%' : step === 5 ? '84%' : '96%'}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="bg-neutral-900/80 backdrop-blur border border-white/10 rounded-xl px-4 py-2 flex items-center gap-3">
-                            <Clock className="w-4 h-4 text-amber-400" />
-                            <div className="flex flex-col">
-                              <span className="text-[9px] text-neutral-500 uppercase tracking-widest font-bold">Buffer</span>
-                              <span className="text-sm font-bold text-white">14 Days</span>
-                            </div>
-                          </div>
-                        </motion.div>
+                        {/* Metrics Bar - ONLY visible in step 3 and 4 */}
+                        <AnimatePresence>
+                          {step < 5 && (
+                            <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -20, opacity: 0 }} transition={{ delay: 0.2 }} className="flex gap-4">
+                              <div className="bg-neutral-900/80 backdrop-blur border border-white/10 rounded-xl px-4 py-2 flex items-center gap-3">
+                                <Activity className="w-4 h-4 text-emerald-400" />
+                                <div className="flex flex-col">
+                                  <span className="text-[9px] text-neutral-500 uppercase tracking-widest font-bold">Success Prob</span>
+                                  <span className="text-sm font-bold text-white">
+                                    {step === 3 ? '45%' : '72%'}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="bg-neutral-900/80 backdrop-blur border border-white/10 rounded-xl px-4 py-2 flex items-center gap-3">
+                                <Clock className="w-4 h-4 text-amber-400" />
+                                <div className="flex flex-col">
+                                  <span className="text-[9px] text-neutral-500 uppercase tracking-widest font-bold">Buffer</span>
+                                  <span className="text-sm font-bold text-white">14 Days</span>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
 
                       {/* Middle - Simulated Nodes Graph Visual */}
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-700 ${step === 5 ? '-translate-x-32 opacity-30' : ''}`}>
                          <div className="relative w-full max-w-2xl h-96">
                             {/* Simple fake nodes for the cinematic modal */}
                             <SimulatedNode x={0} y={150} title="Market Research" status={step >= 4 ? "COMPLETED" : "PENDING"} />
-                            <SimulatedNode x={250} y={50} title="System Architecture" status={step >= 5 ? "COMPLETED" : step >= 4 ? "RUNNING" : "PENDING"} />
+                            <SimulatedNode x={250} y={50} title="System Architecture" status={step >= 5 ? "COMPLETED" : step >= 4 ? "RUNNING" : "PENDING"} isSelected={step === 5} />
                             <SimulatedNode x={250} y={250} title="Write PRD" status={step >= 5 ? "COMPLETED" : "PENDING"} />
-                            <SimulatedNode x={500} y={150} title="Develop MVP" status={step >= 6 ? "COMPLETED" : "PENDING"} />
+                            <SimulatedNode x={500} y={150} title="Develop MVP" status={"PENDING"} />
                          </div>
                       </div>
 
-                      {/* Right panel sliding in at step 5 */}
+                      {/* Right panel sliding in at step 5 - Focused on Deliverables */}
                       <AnimatePresence>
-                        {step >= 5 && (
+                        {step === 5 && (
                           <motion.div 
-                            initial={{ x: 400 }} animate={{ x: 0 }} exit={{ x: 400 }}
-                            className="absolute top-0 right-0 bottom-0 w-[450px] bg-neutral-950/90 backdrop-blur-2xl border-l border-white/10 pointer-events-auto shadow-2xl flex flex-col"
+                            initial={{ x: 500, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 500, opacity: 0 }} transition={{ type: "spring", damping: 25 }}
+                            className="absolute top-0 right-0 bottom-0 w-[550px] bg-neutral-950/95 backdrop-blur-3xl border-l border-white/10 pointer-events-auto shadow-2xl flex flex-col z-20"
                           >
-                             <div className="p-6 border-b border-white/10">
-                               <h3 className="text-lg font-bold">System Architecture</h3>
-                               <p className="text-sm text-neutral-400">Node Inspector</p>
+                             <div className="p-6 border-b border-white/10 bg-indigo-500/5">
+                               <div className="flex justify-between items-center mb-2">
+                                 <h3 className="text-xl font-bold text-white flex items-center gap-2"><FileText className="w-5 h-5 text-indigo-400"/> System Architecture</h3>
+                                 <div className="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-[10px] font-bold uppercase tracking-widest">Completed</div>
+                               </div>
+                               <p className="text-sm text-neutral-400">Node Inspector & AI Deliverables</p>
                              </div>
-                             <div className="p-6 flex-1 overflow-hidden">
-                               <div className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-4">Deliverable Output</div>
-                               <div className="prose prose-invert prose-sm">
-                                 <h3>🎯 Summary</h3>
-                                 <p>The Architecture Agent has finalized the technical design. We are leveraging Next.js App Router, Prisma, PostgreSQL, and React Flow.</p>
-                                 <h3>✅ Action Items</h3>
-                                 <ul>
-                                   <li>Define Database Schema</li>
-                                   <li>Design Agent Pipeline</li>
-                                 </ul>
+                             
+                             <div className="p-6 flex-1 overflow-hidden flex flex-col">
+                               <div className="flex gap-2 mb-4">
+                                 <button className="flex-1 bg-white/10 hover:bg-white/20 py-2 rounded text-xs font-semibold">Preview</button>
+                                 <button className="flex-1 bg-white/5 hover:bg-white/10 py-2 rounded text-xs font-semibold text-neutral-400">Reasoning</button>
+                                 <button className="flex-1 bg-white/5 hover:bg-white/10 py-2 rounded text-xs font-semibold text-neutral-400">Export .md</button>
+                               </div>
+                               <div className="flex-1 overflow-y-auto bg-black/50 border border-white/5 rounded-lg p-5">
+                                 <div className="prose prose-invert prose-sm max-w-none">
+                                   <h2 className="text-indigo-300">Architecture Definition Document (ADD)</h2>
+                                   <p>Based on the goal <strong>Organise a college technical fest</strong>, the following tech stack and microservices architecture has been planned to support registration, ticketing, and event scheduling.</p>
+                                   <hr className="border-white/10 my-4" />
+                                   <h3 className="text-white">1. Tech Stack Overview</h3>
+                                   <ul>
+                                     <li><strong>Frontend:</strong> Next.js App Router, Tailwind CSS</li>
+                                     <li><strong>Backend:</strong> Node.js, Prisma ORM, PostgreSQL</li>
+                                     <li><strong>Payments:</strong> Stripe Integration</li>
+                                   </ul>
+                                   <h3 className="text-white">2. Core Microservices</h3>
+                                   <pre className="bg-[#111] border border-white/10 p-3 rounded text-indigo-200">
+{`UserAuthService -> TicketService
+TicketService -> PaymentGateway
+EventScheduleService -> UserAuthService`}
+                                   </pre>
+                                 </div>
                                </div>
                              </div>
                           </motion.div>
@@ -272,14 +294,86 @@ export default function DemoModal({ onClose }: DemoModalProps) {
                   </motion.div>
                 )}
 
+                {/* STEP 6: Analytics & Risk */}
+                {step === 6 && (
+                  <motion.div key="step6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="absolute inset-0 bg-[#0a0a0a] p-12 overflow-y-auto">
+                    <div className="max-w-5xl mx-auto">
+                      <div className="flex items-center gap-3 mb-8">
+                        <Activity className="w-8 h-8 text-indigo-500" />
+                        <h2 className="text-3xl font-bold text-white">Project Analytics & Risk</h2>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-6 mb-8">
+                        {/* Success Prob Card */}
+                        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-gradient-to-br from-emerald-900/40 to-neutral-900 border border-emerald-500/20 rounded-2xl p-6 relative overflow-hidden">
+                          <div className="text-emerald-500 mb-2"><ShieldCheck className="w-6 h-6"/></div>
+                          <div className="text-5xl font-black text-white mb-2">91%</div>
+                          <div className="text-sm text-emerald-200 font-medium">Success Probability</div>
+                          <p className="text-xs text-neutral-400 mt-4 leading-relaxed">Completing Authentication early increased confidence by +12%.</p>
+                        </motion.div>
+
+                        {/* Buffer Days Card */}
+                        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-gradient-to-br from-amber-900/40 to-neutral-900 border border-amber-500/20 rounded-2xl p-6 relative overflow-hidden">
+                          <div className="text-amber-500 mb-2"><Clock className="w-6 h-6"/></div>
+                          <div className="text-5xl font-black text-white mb-2">14</div>
+                          <div className="text-sm text-amber-200 font-medium">Buffer Days Remaining</div>
+                          <p className="text-xs text-neutral-400 mt-4 leading-relaxed">You can afford to delay tasks by exactly 14 days without missing the deadline.</p>
+                        </motion.div>
+
+                        {/* Risk Score Card */}
+                        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.3 }} className="bg-neutral-900 border border-white/10 rounded-2xl p-6 relative overflow-hidden">
+                          <div className="text-indigo-500 mb-2"><BrainCircuit className="w-6 h-6"/></div>
+                          <div className="text-3xl font-black text-white mb-1">Low Risk</div>
+                          <div className="text-sm text-neutral-400 font-medium mb-4">Overall Project Status</div>
+                          <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
+                             <div className="h-full bg-indigo-500 w-[15%]" />
+                          </div>
+                        </motion.div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-6">
+                        <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="bg-neutral-900/50 border border-white/10 rounded-2xl p-6">
+                          <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Target className="w-4 h-4 text-indigo-400"/> AI Insights</h3>
+                          <ul className="space-y-4">
+                            <li className="flex gap-3 items-start">
+                              <div className="w-2 h-2 rounded-full bg-red-500 mt-1.5 shrink-0" />
+                              <p className="text-sm text-neutral-300"><strong className="text-white">Bottleneck Warning:</strong> Backend Development is blocking 4 downstream tasks. Consider parallelizing.</p>
+                            </li>
+                            <li className="flex gap-3 items-start">
+                              <div className="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                              <p className="text-sm text-neutral-300"><strong className="text-white">Resource Optimization:</strong> Documentation and Testing can be executed concurrently to save 3 days.</p>
+                            </li>
+                          </ul>
+                        </motion.div>
+                        <motion.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }} className="bg-neutral-900/50 border border-white/10 rounded-2xl p-6 flex flex-col justify-center items-center">
+                           <h3 className="text-lg font-bold text-white mb-6 self-start w-full">Completion Progress</h3>
+                           <div className="relative w-40 h-40 flex items-center justify-center">
+                             <svg className="w-full h-full transform -rotate-90">
+                               <circle cx="80" cy="80" r="70" className="stroke-neutral-800" strokeWidth="12" fill="none" />
+                               <circle cx="80" cy="80" r="70" className="stroke-indigo-500" strokeWidth="12" fill="none" strokeDasharray="439" strokeDashoffset="131" />
+                             </svg>
+                             <div className="absolute text-3xl font-black text-white">70%</div>
+                           </div>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
                 {/* STEP 7: Final Summary */}
                 {step === 7 && (
-                  <motion.div key="step7" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="absolute inset-0 flex flex-col items-center justify-center bg-black p-12">
-                     <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mb-8 border border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-                        <CheckCircle2 className="w-10 h-10 text-emerald-400" />
-                     </div>
-                     <h2 className="text-4xl font-black text-white mb-4">Master Plan Ready</h2>
-                     <p className="text-xl text-neutral-400 mb-12">GoalForge AI has autonomously executed the critical path.</p>
+                  <motion.div key="step7" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", damping: 20 }} className="absolute inset-0 flex flex-col items-center justify-center bg-black p-12 overflow-hidden">
+                     {/* Celebration Background Effect */}
+                     <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 2, opacity: [0, 0.2, 0] }} transition={{ duration: 1.5, ease: "easeOut" }} className="absolute w-[800px] h-[800px] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
+                     
+                     <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", bounce: 0.6, delay: 0.2 }} className="relative w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center mb-8 border border-emerald-500/50 shadow-[0_0_50px_rgba(16,185,129,0.4)] z-10">
+                        <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                          <CheckCircle2 className="w-12 h-12 text-emerald-400" />
+                        </motion.div>
+                     </motion.div>
+                     
+                     <motion.h2 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-5xl font-black text-white mb-4 z-10">Master Plan Ready</motion.h2>
+                     <motion.p initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-xl text-emerald-400/80 font-medium mb-12 z-10 tracking-wide">GoalForge AI has autonomously executed the critical path.</motion.p>
                      
                      <div className="grid grid-cols-2 gap-4 max-w-2xl w-full">
                        <div className="bg-neutral-900 border border-white/10 rounded-xl p-4 flex items-center gap-4">
@@ -333,13 +427,14 @@ const TypewriterText = ({ text }: { text: string }) => {
 };
 
 // Quick Simulated Node component for the cinematic look
-const SimulatedNode = ({ x, y, title, status }: { x: number, y: number, title: string, status: string }) => {
+const SimulatedNode = ({ x, y, title, status, isSelected }: { x: number, y: number, title: string, status: string, isSelected?: boolean }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       className={`absolute w-56 rounded-xl border p-4 backdrop-blur-md shadow-xl transition-all duration-500
-        ${status === 'COMPLETED' ? 'bg-emerald-950/20 border-emerald-500/50 opacity-50' : 
+        ${isSelected ? 'ring-2 ring-indigo-500 shadow-[0_0_30px_rgba(99,102,241,0.3)] z-10 scale-105 opacity-100' : ''}
+        ${status === 'COMPLETED' ? 'bg-emerald-950/20 border-emerald-500/50 ' + (!isSelected && 'opacity-50') : 
           status === 'RUNNING' ? 'bg-amber-950/20 border-amber-500/80 animate-pulse' : 
           'bg-neutral-900/90 border-neutral-700'}`}
       style={{ left: x, top: y }}

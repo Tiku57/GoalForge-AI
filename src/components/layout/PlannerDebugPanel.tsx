@@ -30,45 +30,47 @@ export default function PlannerDebugPanel({ debugInfo }: PlannerDebugPanelProps)
   const isError = debugInfo.status === 'FALLBACK';
 
   return (
-    <div className="fixed bottom-6 left-[340px] z-[100] font-mono text-xs flex flex-col items-start gap-2">
+    <div className="fixed top-4 right-4 z-[100] font-mono text-xs flex flex-col items-end gap-2 pointer-events-none">
+      
+      {/* Tiny Status Indicator (Collapsed State) */}
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className="pointer-events-auto cursor-pointer flex items-center gap-2 h-7 px-3 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-neutral-300 shadow-sm transition-all hover:bg-black/80 hover:scale-105 active:scale-95 group"
+      >
+        <div className={`w-2 h-2 rounded-full ${isError ? 'bg-red-500 animate-pulse' : 'bg-emerald-500'}`} />
+        <span className="font-semibold text-[10px] tracking-wide text-white">
+          {isError ? 'OFFLINE' : 'LIVE'}
+        </span>
+        <div className="w-[1px] h-3 bg-white/20 mx-1" />
+        <span className="text-[10px] opacity-80">{debugInfo.model.replace('models/', '').split('-').slice(0, 2).join(' ')}</span>
+        <div className="w-[1px] h-3 bg-white/20 mx-1" />
+        <span className="text-[10px] opacity-80 font-medium">{debugInfo.latency}ms</span>
+        {isOpen ? <ChevronUp className="w-3 h-3 ml-1 opacity-50" /> : <ChevronDown className="w-3 h-3 ml-1 opacity-50" />}
+      </div>
+
+      {/* Expanded State */}
       {isOpen && (
-        <div className="w-[340px] shadow-2xl rounded-xl border border-white/10 bg-black/80 backdrop-blur-xl overflow-hidden animate-in slide-in-from-bottom-2 fade-in duration-200">
-          <div className="p-4 space-y-3 text-neutral-300">
-            <div className="flex flex-col gap-1">
-              <span className="text-neutral-500 flex items-center gap-1"><Activity className="w-3 h-3"/> Model Used</span>
+        <div className="pointer-events-auto w-[280px] shadow-2xl rounded-xl border border-white/10 bg-black/80 backdrop-blur-xl overflow-hidden animate-in slide-in-from-top-2 fade-in duration-200">
+          <div className="p-3 space-y-2 text-neutral-300">
+            <div className="flex flex-col gap-0.5">
+              <span className="text-neutral-500 flex items-center gap-1 text-[9px] uppercase tracking-wider"><Activity className="w-3 h-3"/> Model</span>
               <span className="text-indigo-400 break-all">{debugInfo.model}</span>
             </div>
             
-            <div className="flex flex-col gap-1">
-              <span className="text-neutral-500 flex items-center gap-1"><Clock className="w-3 h-3"/> Latency</span>
+            <div className="flex flex-col gap-0.5 mt-2">
+              <span className="text-neutral-500 flex items-center gap-1 text-[9px] uppercase tracking-wider"><Clock className="w-3 h-3"/> Latency</span>
               <span className="text-amber-400">{debugInfo.latency} ms</span>
             </div>
 
             {debugInfo.fallbackReason && (
-              <div className="flex flex-col gap-1 mt-2 p-2 bg-red-950/40 border border-red-900/50 rounded-lg max-h-40 overflow-y-auto">
-                <span className="text-red-500 flex items-center gap-1"><FileText className="w-3 h-3"/> Fallback Reason</span>
-                <span className="text-red-400 text-[10px] break-words whitespace-pre-wrap">{debugInfo.fallbackReason}</span>
+              <div className="flex flex-col gap-1 mt-3 p-2 bg-red-950/40 border border-red-900/50 rounded-lg max-h-32 overflow-y-auto">
+                <span className="text-red-500 flex items-center gap-1 text-[9px] uppercase tracking-wider"><FileText className="w-3 h-3"/> Fallback Reason</span>
+                <span className="text-red-400 text-[9px] leading-relaxed break-words whitespace-pre-wrap">{debugInfo.fallbackReason}</span>
               </div>
             )}
           </div>
         </div>
       )}
-
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-3 py-2 rounded-full shadow-lg border backdrop-blur-md transition-all hover:scale-105 active:scale-95 ${
-          isError 
-            ? 'bg-red-950/80 border-red-900/50 text-red-400 hover:bg-red-900/80' 
-            : 'bg-emerald-950/80 border-emerald-900/50 text-emerald-400 hover:bg-emerald-900/80'
-        }`}
-      >
-        <Bug className="w-4 h-4" />
-        <span className="font-bold tracking-wider text-[10px]">DEBUG</span>
-        <span className={`px-1.5 py-0.5 rounded-full text-[9px] uppercase ${isError ? 'bg-red-500/20' : 'bg-emerald-500/20'}`}>
-          {debugInfo.status}
-        </span>
-        {isOpen ? <ChevronDown className="w-3 h-3 opacity-50" /> : <ChevronUp className="w-3 h-3 opacity-50" />}
-      </button>
     </div>
   );
 }
