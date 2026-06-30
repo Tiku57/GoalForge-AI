@@ -375,7 +375,7 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
   return (
     <div className="w-full h-full flex flex-col bg-[#0a0a0a]">
       {/* Top Action Bar */}
-      <div className="min-h-[80px] py-4 border-b border-neutral-800 bg-neutral-950/50 backdrop-blur-md flex flex-wrap items-center justify-between px-6 gap-4 z-20">
+      <div className="min-h-[80px] py-4 border-b border-neutral-800 bg-neutral-950/50 backdrop-blur-md flex flex-wrap items-center justify-between px-6 pl-16 lg:pl-6 gap-4 z-20">
         <div>
           <Button 
             onClick={handleAutoExecute}
@@ -399,7 +399,7 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
             <div className="h-11 flex items-center bg-neutral-900 border border-neutral-800 rounded-xl px-4 gap-3 shadow-inner">
               <Activity className="w-4 h-4 text-emerald-400" />
               <div className="flex flex-col">
-                <span className="text-[9px] text-neutral-500 uppercase tracking-widest font-bold">Success Prob</span>
+                <span className="text-[9px] text-neutral-500 uppercase tracking-widest font-bold hidden sm:block">Success Prob</span>
                 <span className="text-sm font-bold text-white">{metrics.completionProbability}%</span>
               </div>
             </div>
@@ -407,7 +407,7 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
             <div className="h-11 flex items-center bg-neutral-900 border border-neutral-800 rounded-xl px-4 gap-3 shadow-inner">
               <Clock className="w-4 h-4 text-amber-400" />
               <div className="flex flex-col">
-                <span className="text-[9px] text-neutral-500 uppercase tracking-widest font-bold">Buffer</span>
+                <span className="text-[9px] text-neutral-500 uppercase tracking-widest font-bold hidden sm:block">Buffer</span>
                 <span className="text-sm font-bold text-white">{metrics.bufferDays} Days</span>
               </div>
             </div>
@@ -415,14 +415,14 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
             <div className={`h-11 flex items-center border rounded-xl px-4 gap-3 shadow-inner ${metrics.riskScore === 'Critical' ? 'bg-red-950/30 border-red-900' : 'bg-neutral-900 border-neutral-800'}`}>
               <AlertTriangle className={`w-4 h-4 ${metrics.riskScore === 'Critical' ? 'text-red-500' : 'text-rose-400'}`} />
               <div className="flex flex-col">
-                <span className={`text-[9px] uppercase tracking-widest font-bold ${metrics.riskScore === 'Critical' ? 'text-red-400' : 'text-neutral-500'}`}>Risk Profile</span>
+                <span className={`text-[9px] uppercase tracking-widest font-bold hidden sm:block ${metrics.riskScore === 'Critical' ? 'text-red-400' : 'text-neutral-500'}`}>Risk Profile</span>
                 <span className="text-sm font-bold text-white">{metrics.riskScore}</span>
               </div>
             </div>
             
             {plannerDebugInfo && (
               <>
-                <div className="w-[1px] h-8 bg-neutral-800 mx-2" />
+                <div className="w-[1px] h-8 bg-neutral-800 mx-2 hidden md:block" />
                 <PlannerDebugPanel debugInfo={plannerDebugInfo} />
               </>
             )}
@@ -430,9 +430,9 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
         )}
       </div>
 
-      {/* Main Canvas + Sidebar Area */}
-      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
-        <div className="flex-1 relative min-h-[50vh]">
+      {/* Main Canvas Area */}
+      <div className="flex-1 flex overflow-hidden relative">
+        <div className="flex-1 w-full h-full relative">
           <ReactFlow
             nodes={nodes}
             edges={styledEdges}
@@ -451,9 +451,23 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
           </ReactFlow>
         </div>
 
-        {/* Node Inspector Panel */}
-        <div className={`border-t md:border-t-0 md:border-l border-neutral-800 bg-neutral-950/90 backdrop-blur-3xl flex flex-col transition-all duration-300 z-10 ${selectedNodeId ? 'h-[50vh] md:h-auto md:w-[450px]' : 'h-0 md:h-auto md:w-0 overflow-hidden border-none'}`}>
-          <div className="w-full h-full md:w-[450px] overflow-hidden">
+        {/* Node Inspector Panel (Bottom Sheet on Mobile, Side Panel on Desktop) */}
+        <div 
+          className={`
+            fixed md:static bottom-0 left-0 w-full md:w-auto
+            border-t md:border-t-0 md:border-l border-neutral-800 
+            bg-neutral-950/95 backdrop-blur-3xl flex flex-col 
+            transition-all duration-300 ease-in-out z-30
+            rounded-t-2xl md:rounded-none shadow-[0_-20px_40px_rgba(0,0,0,0.5)] md:shadow-none
+            ${selectedNodeId ? 'translate-y-0 h-[75vh] md:h-auto md:w-[450px]' : 'translate-y-full md:translate-y-0 h-[75vh] md:h-auto md:w-0 overflow-hidden border-none'}
+          `}
+        >
+          {/* Mobile Handle */}
+          <div className="w-full h-6 flex md:hidden items-center justify-center shrink-0" onClick={() => setSelectedNodeId(null)}>
+            <div className="w-12 h-1.5 bg-neutral-700 rounded-full" />
+          </div>
+
+          <div className="w-full h-[calc(100%-1.5rem)] md:h-full md:w-[450px] overflow-hidden">
             <NodeInspector 
               selectedNode={selectedNode} 
               onExecute={handleExecute} 

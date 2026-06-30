@@ -44,7 +44,7 @@ export default function PlannerDebugPanel({ debugInfo }: PlannerDebugPanelProps)
 
       {/* Expanded State */}
       {isOpen && (
-        <div className="absolute top-full mt-2 right-0 pointer-events-auto w-[280px] shadow-2xl rounded-xl border border-white/10 bg-black/90 backdrop-blur-xl overflow-hidden animate-in slide-in-from-top-2 fade-in duration-200">
+        <div className="absolute top-full mt-2 right-0 pointer-events-auto w-[280px] sm:w-[320px] max-w-[90vw] shadow-2xl rounded-xl border border-white/10 bg-black/90 backdrop-blur-xl overflow-hidden animate-in slide-in-from-top-2 fade-in duration-200 z-50">
           <div className="p-3 space-y-2 text-neutral-300">
             <div className="flex flex-col gap-0.5">
               <span className="text-neutral-500 flex items-center gap-1 text-[9px] uppercase tracking-wider"><Activity className="w-3 h-3"/> Model</span>

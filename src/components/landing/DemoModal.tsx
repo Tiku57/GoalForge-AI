@@ -116,9 +116,9 @@ export default function DemoModal({ onClose }: DemoModalProps) {
             </div>
           </div>
 
-          <div className="flex-1 flex overflow-hidden">
+          <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
             {/* Left Sidebar (Progress) */}
-            <div className="w-72 border-r border-white/10 bg-neutral-950 p-6 flex flex-col">
+            <div className="hidden md:flex w-72 border-r border-white/10 bg-neutral-950 p-6 flex-col">
               <h2 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-6">Demo Progress</h2>
               
               <div className="flex flex-col gap-6 relative">
@@ -251,7 +251,7 @@ export default function DemoModal({ onClose }: DemoModalProps) {
                         {step === 5 && (
                           <motion.div 
                             initial={{ x: 500, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 500, opacity: 0 }} transition={{ type: "spring", damping: 25 }}
-                            className="absolute top-0 right-0 bottom-0 w-[550px] bg-neutral-950/95 backdrop-blur-3xl border-l border-white/10 pointer-events-auto shadow-2xl flex flex-col z-20"
+                            className="absolute bottom-0 left-0 right-0 md:top-0 md:left-auto md:w-[550px] h-[60vh] md:h-auto bg-neutral-950/95 backdrop-blur-3xl border-t md:border-t-0 md:border-l border-white/10 pointer-events-auto shadow-2xl flex flex-col z-20 rounded-t-2xl md:rounded-none"
                           >
                              <div className="p-6 border-b border-white/10 bg-indigo-500/5">
                                <div className="flex justify-between items-center mb-2">
@@ -303,7 +303,7 @@ EventScheduleService -> UserAuthService`}
                         <h2 className="text-3xl font-bold text-white">Project Analytics & Risk</h2>
                       </div>
 
-                      <div className="grid grid-cols-3 gap-6 mb-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
                         {/* Success Prob Card */}
                         <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-gradient-to-br from-emerald-900/40 to-neutral-900 border border-emerald-500/20 rounded-2xl p-6 relative overflow-hidden">
                           <div className="text-emerald-500 mb-2"><ShieldCheck className="w-6 h-6"/></div>

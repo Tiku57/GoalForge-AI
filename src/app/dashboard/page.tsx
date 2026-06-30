@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import WorkflowCanvas from '@/components/graph/WorkflowCanvas';
 import { Button } from '@/components/ui/button';
-import { Loader2, Calendar, Target, Flag } from 'lucide-react';
+import { Loader2, Calendar, Target, Flag, Menu, X } from 'lucide-react';
 import GlobalLogo from '@/components/ui/GlobalLogo';
 import PlannerDebugPanel from '@/components/layout/PlannerDebugPanel';
 
@@ -14,6 +14,7 @@ export default function DashboardPage() {
   const [workflowData, setWorkflowData] = useState<any>(null);
   const [workflowId, setWorkflowId] = useState<string | null>(null);
   const [plannerDebugInfo, setPlannerDebugInfo] = useState<any>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handlePlanGoal = async () => {
     if (!goal) return;
@@ -49,12 +50,34 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-black text-white overflow-hidden">
+    <div className="flex h-screen bg-black text-white overflow-hidden relative">
+      
+      {/* Mobile Sidebar Toggle Button */}
+      <button 
+        onClick={() => setIsSidebarOpen(true)}
+        className="lg:hidden absolute top-4 left-4 z-40 p-2 bg-neutral-900 border border-neutral-800 rounded-lg text-white shadow-lg"
+      >
+        <Menu className="w-5 h-5" />
+      </button>
+
+      {/* Overlay for Mobile Sidebar */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-full md:w-80 flex-shrink-0 max-h-[50vh] md:max-h-screen overflow-y-auto border-b md:border-b-0 md:border-r border-neutral-800 bg-neutral-950 p-6 flex flex-col gap-6 relative z-10 shadow-2xl">
-        <div>
-          <GlobalLogo />
-          <p className="text-xs text-neutral-400 font-medium">Your Autonomous Chief of Staff</p>
+      <aside className={`fixed lg:static top-0 left-0 h-full w-[85vw] max-w-[320px] lg:w-64 xl:w-80 flex-shrink-0 overflow-y-auto border-r border-neutral-800 bg-neutral-950 p-6 flex flex-col gap-6 z-50 shadow-2xl transition-transform duration-300 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+        <div className="flex items-center justify-between">
+          <div>
+            <GlobalLogo />
+            <p className="text-xs text-neutral-400 font-medium mt-1">Your Autonomous Chief of Staff</p>
+          </div>
+          <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden p-2 text-neutral-400 hover:text-white">
+            <X className="w-5 h-5" />
+          </button>
         </div>
         
         <div className="flex flex-col gap-5 mt-4 flex-1">

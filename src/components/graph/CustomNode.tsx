@@ -52,7 +52,7 @@ const CustomNode = ({ data }: { data: CustomNodeData }) => {
       layout
       whileHover={{ scale: 1.02, y: -2 }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
-      className={`relative px-5 py-4 rounded-2xl backdrop-blur-2xl border shadow-xl ${getBorderClass()} min-w-[300px] max-w-[340px] ${isCompleted ? 'opacity-50 grayscale-[0.2]' : 'opacity-100'}`}
+      className={`relative px-5 py-4 rounded-2xl backdrop-blur-2xl border shadow-xl ${getBorderClass()} w-[280px] md:w-[320px] max-w-[90vw] ${isCompleted ? 'opacity-50 grayscale-[0.2]' : 'opacity-100'}`}
     >
       <Handle type="target" position={Position.Top} className="w-2.5 h-2.5 !bg-indigo-500 border-2 border-black" />
       
