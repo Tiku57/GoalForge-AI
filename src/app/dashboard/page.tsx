@@ -49,9 +49,9 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex h-screen bg-black text-white overflow-hidden">
+    <div className="flex flex-col md:flex-row h-screen bg-black text-white overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-80 border-r border-neutral-800 bg-neutral-950 p-6 flex flex-col gap-6 relative z-10 shadow-2xl">
+      <aside className="w-full md:w-80 flex-shrink-0 max-h-[50vh] md:max-h-screen overflow-y-auto border-b md:border-b-0 md:border-r border-neutral-800 bg-neutral-950 p-6 flex flex-col gap-6 relative z-10 shadow-2xl">
         <div>
           <GlobalLogo />
           <p className="text-xs text-neutral-400 font-medium">Your Autonomous Chief of Staff</p>

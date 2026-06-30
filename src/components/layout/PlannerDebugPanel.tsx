@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Bug, Activity, Clock, FileText, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface DebugInfo {
@@ -16,16 +16,8 @@ interface PlannerDebugPanelProps {
 
 export default function PlannerDebugPanel({ debugInfo }: PlannerDebugPanelProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    // Only show in development or if explicitly enabled
-    if (process.env.NODE_ENV === 'development' || process.env.NEXT_PUBLIC_DEBUG === 'true') {
-      setIsVisible(true);
-    }
-  }, []);
-
-  if (!isVisible || !debugInfo) return null;
+  if (!debugInfo) return null;
 
   const isError = debugInfo.status === 'FALLBACK';
 

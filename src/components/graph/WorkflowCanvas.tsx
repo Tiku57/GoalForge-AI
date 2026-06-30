@@ -375,7 +375,7 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
   return (
     <div className="w-full h-full flex flex-col bg-[#0a0a0a]">
       {/* Top Action Bar */}
-      <div className="h-20 border-b border-neutral-800 bg-neutral-950/50 backdrop-blur-md flex items-center justify-between px-6 z-20">
+      <div className="min-h-[80px] py-4 border-b border-neutral-800 bg-neutral-950/50 backdrop-blur-md flex flex-wrap items-center justify-between px-6 gap-4 z-20">
         <div>
           <Button 
             onClick={handleAutoExecute}
@@ -395,7 +395,7 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
         </div>
 
         {metrics && (
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4 w-full md:w-auto">
             <div className="h-11 flex items-center bg-neutral-900 border border-neutral-800 rounded-xl px-4 gap-3 shadow-inner">
               <Activity className="w-4 h-4 text-emerald-400" />
               <div className="flex flex-col">
@@ -431,8 +431,8 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
       </div>
 
       {/* Main Canvas + Sidebar Area */}
-      <div className="flex-1 flex overflow-hidden">
-        <div className="flex-1 relative">
+      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+        <div className="flex-1 relative min-h-[50vh]">
           <ReactFlow
             nodes={nodes}
             edges={styledEdges}
@@ -451,9 +451,9 @@ export default function WorkflowCanvas({ dynamicData, workflowId, deadline, plan
           </ReactFlow>
         </div>
 
-        {/* Right Panel (Node Inspector) */}
-        <div className={`border-l border-neutral-800 bg-neutral-950/90 backdrop-blur-3xl flex flex-col transition-all duration-300 z-10 ${selectedNodeId ? 'w-[450px]' : 'w-0 overflow-hidden border-none'}`}>
-          <div className="w-[450px] h-full">
+        {/* Node Inspector Panel */}
+        <div className={`border-t md:border-t-0 md:border-l border-neutral-800 bg-neutral-950/90 backdrop-blur-3xl flex flex-col transition-all duration-300 z-10 ${selectedNodeId ? 'h-[50vh] md:h-auto md:w-[450px]' : 'h-0 md:h-auto md:w-0 overflow-hidden border-none'}`}>
+          <div className="w-full h-full md:w-[450px] overflow-hidden">
             <NodeInspector 
               selectedNode={selectedNode} 
               onExecute={handleExecute} 
