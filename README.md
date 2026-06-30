@@ -143,6 +143,13 @@ GoalForge AI strictly adheres to premium design aesthetics:
 
 ---
 
+## 📫 Contact
+
+Feel free to reach out for collaborations or opportunities!
+
+- **GitHub:** [Tiku57](https://github.com/Tiku57)
+- **LinkedIn:** [Aaditya Sattawan](https://www.linkedin.com/in/aaditya-sattawan/)
+
 <div align="center">
   <p>Built with precision for <strong>Vibe2Ship 2026</strong>.</p>
 </div>
