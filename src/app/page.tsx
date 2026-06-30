@@ -50,6 +50,20 @@ const AnimatedCounter = ({ value, duration = 2, suffix = "+" }: { value: number,
 export default function LandingPageV2() {
   const [showDemo, setShowDemo] = useState(false);
 
+  // Force scroll to top on mount to fix scroll restoration bugs
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // Backup for some browsers where history API overrides standard scroll
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    return () => {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-indigo-500/30 overflow-x-hidden font-sans">
       

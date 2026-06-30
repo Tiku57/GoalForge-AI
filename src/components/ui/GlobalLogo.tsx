@@ -10,6 +10,7 @@ export default function GlobalLogo({ className = "" }: { className?: string }) {
     <Link 
       href="/" 
       aria-label="Go to Home"
+      onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })}
       className={`group relative z-10 flex items-center gap-2 cursor-pointer no-underline focus:outline-none ${className}`}
     >
       <motion.div
